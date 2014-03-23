@@ -1,0 +1,25 @@
+{
+  "name": "restify-formatter-text",
+  "version": "0.1.0",
+  "description": "formatter-text",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --reporter spec test/test.js",
+    "cover": "./node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test/test.js -- -u exports -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/restify/formatter-text.git"
+  },
+  "author": "Gergely Nemeth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/restify/formatter-text/issues"
+  },
+  "homepage": "https://github.com/restify/formatter-text",
+  "devDependencies": {
+    "mocha": "^1.17.1",
+    "chai": "^1.9.0",
+    "istanbul": "^0.2.6"
+  }
+}
