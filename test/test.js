@@ -6,6 +6,15 @@ describe('Text formatter', function () {
     setHeader: function () {}
   };
 
+  var mockResponseWithFunction = function(obj) {
+    return {
+      setHeader: function (key, value) {
+        obj.key = key;
+        obj.value = value;
+      }
+    };
+  };
+
   it('serializes a JSON object type of body', function (){
     var body = {};
     expect(formatter(mockRequest, mockResponse, body)).to.be.eql('{}');
@@ -19,34 +28,22 @@ describe('Text formatter', function () {
   describe('sets the content-length header', function() {
     it('to zero', function () {
       var body = '';
-      var header;
-      var value;
-      var response = {
-        setHeader: function (_header, _value) {
-          header = _header;
-          value = _value;
-        }
-      };
+      var header = {};
+      var response = mockResponseWithFunction(header);
       formatter(mockRequest, response, body);
-      expect(header).to.be.eql('Content-Length');
-      expect(value).to.be.eql(0);
+      expect(header.key).to.be.eql('Content-Length');
+      expect(header.value).to.be.eql(0);
     });
 
     it('of a JSON body', function () {
       var body = {
         test: 1
       };
-      var header;
-      var value;
-      var response = {
-        setHeader: function (_header, _value) {
-          header = _header;
-          value = _value;
-        }
-      };
+      var header = {};
+      var response = mockResponseWithFunction(header);
       formatter(mockRequest, response, body);
-      expect(header).to.be.eql('Content-Length');
-      expect(value).to.be.eql(10);
+      expect(header.key).to.be.eql('Content-Length');
+      expect(header.value).to.be.eql(10);
     });
   });
 
