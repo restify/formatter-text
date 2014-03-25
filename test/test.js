@@ -26,7 +26,7 @@ describe('Text formatter', function () {
           header = _header;
           value = _value;
         }
-      }
+      };
       formatter(mockRequest, response, body);
       expect(header).to.be.eql('Content-Length');
       expect(value).to.be.eql(0);
@@ -43,7 +43,7 @@ describe('Text formatter', function () {
           header = _header;
           value = _value;
         }
-      }
+      };
       formatter(mockRequest, response, body);
       expect(header).to.be.eql('Content-Length');
       expect(value).to.be.eql(10);
